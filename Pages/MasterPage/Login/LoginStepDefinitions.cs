@@ -11,15 +11,15 @@ namespace SpecflowTask.Pages.MasterPage.Login
     public class LoginStepDefinitions : CommonDriver
     {
 
-        MarsMasterPage MasterPageObj => new MarsMasterPage();
-        LoginMethods LoginMethodObj => new LoginMethods();
-        //public LoginStepDefinitions()
-        //    {
-        //        //masterPageObj = new MarsMasterPage();
-        //        //LoginMethodObj = new LoginMethods();
-        //        //ProFileAssertObj = new ProfileAssertion();
+        MarsMasterPage MasterPageObj;
+        LoginMethods LoginMethodObj;
+        public LoginStepDefinitions()
+        {
+            MasterPageObj = new MarsMasterPage();
+            LoginMethodObj = new LoginMethods();
+            //ProFileAssertObj = new ProfileAssertion();
 
-        //    }
+        }
 
         [Given(@"I logged into portal successfully")]
         public void GivenILoggedIntoPortalSuccessfully()
@@ -38,7 +38,7 @@ namespace SpecflowTask.Pages.MasterPage.Login
         [When(@"Type in Valid Credentials")]
         public void WhenTypeInValidCredentials()
         {
-            string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\New folder (2)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
+            string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\MarsSpecflow\SpecflowTask\DataFiles\TestData.json");
             Users users = JsonConvert.DeserializeObject<Users>(dataJson);
             User user = users.users.ElementAt(0);
             MasterPageObj.MarsMasterPageLoginUser(LoginMethodObj.userUsername(0), LoginMethodObj.userPassword(0));
