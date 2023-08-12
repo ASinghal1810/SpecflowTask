@@ -7,7 +7,8 @@ namespace SpecflowTask.Pages.MasterPage
     public class MarsMasterPage : CommonDriver
     {
         private static IWebElement MasterPageJoinButton => driver.FindElement(By.XPath("//*[@class='ui green basic button' and 'Join']"));
-        private static IWebElement MasterPageSignInButton => driver.FindElement(By.XPath("//*[@class='item' and 'Sign In']"));
+        private static IWebElement MasterPageSignInButton=> driver.FindElement(By.XPath("//*[@class='item' and 'Sign In']"));
+
         private static IWebElement MasterPageLoginButton => driver.FindElement(By.XPath("//button[@class=\"fluid ui teal button\"]"));
         private static IWebElement MasterPageFirstName => driver.FindElement(By.Name("firstName"));
         private static IWebElement MasterPageLastName => driver.FindElement(By.Name("lastName"));
@@ -16,6 +17,20 @@ namespace SpecflowTask.Pages.MasterPage
         private static IWebElement MasterPageConfirmPassword => driver.FindElement(By.Name("confirmPassword"));
         private static IWebElement MasterPageTermsCheckBox => driver.FindElement(By.Name("terms"));
         private static IWebElement MasterPageSubmitButton => driver.FindElement(By.Id("submit-btn"));
+
+        //public MarsMasterPage()
+        //{
+        //    //MasterPageJoinButton = driver.FindElement(By.XPath("//*[@class='ui green basic button' and 'Join']"));
+        //    //MasterPageSignInButton = driver.FindElement(By.XPath("//*[@class='item' and 'Sign In']"));
+        //    MasterPageLoginButton = driver.FindElement(By.XPath("//button[@class=\"fluid ui teal button\"]"));
+        //    MasterPageFirstName = driver.FindElement(By.Name("firstName"));
+        //    MasterPageLastName = driver.FindElement(By.Name("lastName"));
+        //    MasterPageEmail = driver.FindElement(By.Name("email"));
+        //    MasterPagePassword = driver.FindElement(By.Name("password"));
+        //    MasterPageConfirmPassword = driver.FindElement(By.Name("confirmPassword"));
+        //    MasterPageTermsCheckBox = driver.FindElement(By.Name("terms"));
+        //    MasterPageSubmitButton =driver.FindElement(By.Id("submit-btn"));
+        //}
 
 
         public void MarsMasterPageNavigateToLandingPage() => driver.Navigate().GoToUrl("http://localhost:5000/");

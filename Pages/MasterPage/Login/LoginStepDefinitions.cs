@@ -3,6 +3,8 @@ using TechTalk.SpecFlow;
 using SpecflowTask.Drivers;
 using OpenQA.Selenium.Chrome;
 using Newtonsoft.Json;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
 
 namespace SpecflowTask.Pages.MasterPage.Login
 {
@@ -12,12 +14,15 @@ namespace SpecflowTask.Pages.MasterPage.Login
     {
 
         MarsMasterPage MasterPageObj;
-        LoginMethods LoginMethodObj;
+        LoginMethodPassword LoginMethodPassObj;
+        LoginMethodUsername LoginMethodUserObj;
+        //LoginAssertion LoginAssertObj;
         public LoginStepDefinitions()
         {
             MasterPageObj = new MarsMasterPage();
-            LoginMethodObj = new LoginMethods();
-            //ProFileAssertObj = new ProfileAssertion();
+            LoginMethodPassObj = new LoginMethodPassword();
+            LoginMethodUserObj = new LoginMethodUsername();
+            //LoginAssertObj = new LoginAssertion();
 
         }
 
@@ -41,13 +46,37 @@ namespace SpecflowTask.Pages.MasterPage.Login
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\MarsSpecflow\SpecflowTask\DataFiles\TestData.json");
             Users users = JsonConvert.DeserializeObject<Users>(dataJson);
             User user = users.users.ElementAt(0);
-            MasterPageObj.MarsMasterPageLoginUser(LoginMethodObj.userUsername(0), LoginMethodObj.userPassword(0));
+            MasterPageObj.MarsMasterPageLoginUser(LoginMethodUserObj.userUsername(0), LoginMethodPassObj.userPassword(0));
         }
+
+        [When(@"Type in Valid Credentials for Case (.*)")]
+        public void WhenTypeInValidCredentialsForCase(int p0)
+        {
+            string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\MarsSpecflow\SpecflowTask\DataFiles\TestData.json");
+            Users users = JsonConvert.DeserializeObject<Users>(dataJson);
+            User user = users.users.ElementAt(p0);
+            MasterPageObj.MarsMasterPageLoginUser(LoginMethodUserObj.userUsername(p0), LoginMethodPassObj.userPassword(p0));
+        }
+
 
         [Then(@"User is logged in Successfully")]
         public void ThenUserIsLoggedInSuccessfully()
         {
-            Console.WriteLine("Pass");
+            Console.WriteLine(0 + "Pass");
+        }
+
+        [When(@"Type in InValid Credentials")]
+        public void WhenTypeInInValidCredentials()
+        {
+            throw new PendingStepException();
+        }
+
+        [Then(@"Unsuccessful Login")]
+        public void ThenUnsuccessfulLogin()
+        {
+            throw new PendingStepException();
         }
     }
 }
+
+    

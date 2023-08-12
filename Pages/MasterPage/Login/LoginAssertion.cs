@@ -5,16 +5,17 @@ using OpenQA.Selenium;
 
 namespace SpecflowTask.Pages.MasterPage.Login
 {
-    public class ProfileAssertion : CommonDriver
+    public class LoginAssertion : CommonDriver
     {
         private static IWebElement LogoutText => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/a[2]/button"));
-        //private static string NotificationXPath => "/html/body/div[1]";
-        //private static IWebElement NotificationText => driver.FindElement(By.XPath("/html/body/div[1]"));
-        //private static IWebElement CloseHower => driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[3]"));
         private static IWebElement Logout => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/a[2]/button"));
+        //public LoginAssertion()
+        //{
+        //    LogoutText = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/a[2]/button"));
+        //    Logout =  driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/a[2]/button"));
+        //}
 
-
-        public void assertLogin(int i)
+        public void AssertLogin(int i)
         {
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\New folder (2)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
             Users users = JsonConvert.DeserializeObject<Users>(dataJson);

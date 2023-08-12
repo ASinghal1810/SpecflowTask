@@ -15,6 +15,7 @@ namespace SpecflowTask.Pages.MasterPage.Login
     using TechTalk.SpecFlow;
     using System;
     using System.Linq;
+    using SpecflowTask.Pages.MasterPage.Login;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
